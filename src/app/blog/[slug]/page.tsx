@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Container from "@/components/Container";
 import { getAllPosts, getPostBySlug, renderMarkdown } from "@/lib/blog";
@@ -6,8 +7,38 @@ type Params = {
   slug: string;
 };
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
+}
+
+export function generateMetadata({ params }: { params: Params }): Metadata {
+  const post = getPostBySlug(params.slug);
+
+  if (!post) {
+    return {};
+  }
+
+  return {
+    title: `${post.title} | Ravi Tripathi`,
+    description: post.summary,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      url: `/blog/${post.slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.summary,
+    },
+  };
 }
 
 export default async function BlogPostPage({

@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import Container from "@/components/Container";
 import BlogCard from "@/components/BlogCard";
 import { getAllPosts } from "@/lib/blog";
+
+export const metadata: Metadata = {
+  title: "Blog | Ravi Tripathi",
+  description:
+    "Essays on product thinking, system design, and the habits behind consistent shipping.",
+  alternates: {
+    canonical: "/blog",
+  },
+};
 
 export default function BlogPage() {
   const posts = getAllPosts();

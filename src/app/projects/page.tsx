@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import Container from "@/components/Container";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
+
+export const metadata: Metadata = {
+  title: "Projects | Ravi Tripathi",
+  description:
+    "A living catalogue of systems, products, and experiments built by Ravi Tripathi.",
+  alternates: {
+    canonical: "/projects",
+  },
+};
 
 export default function ProjectsPage() {
   return (

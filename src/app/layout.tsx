@@ -14,10 +14,63 @@ const bodyFont = Manrope({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://tripsy-ravi-portfolio.netlify.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Ravi Tripathi | Full-Stack + Product",
   description:
-    "Portfolio of Ravi Tripathi, a full-stack developer with a product manager mindset.",
+    "Ravi Tripathi is a full-stack engineer with a product-first mindset, building reliable systems and calm user experiences.",
+  alternates: {
+    canonical: "/",
+  },
+  keywords: [
+    "Ravi Tripathi",
+    "Full-stack engineer",
+    "Product manager mindset",
+    "Healthcare automation",
+    "Technical Account Manager",
+    "Portfolio",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    title: "Ravi Tripathi | Full-Stack + Product",
+    description:
+      "I turn complex systems into simple, high-impact products. Full-stack engineering with a product-first mindset.",
+    url: siteUrl,
+    siteName: "Ravi Tripathi",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Ravi Tripathi portfolio preview",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ravi Tripathi | Full-Stack + Product",
+    description:
+      "Full-stack engineer with a product-first mindset. Building reliable systems and calm experiences.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
